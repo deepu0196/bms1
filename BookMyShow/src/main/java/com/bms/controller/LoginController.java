@@ -1,6 +1,9 @@
 package com.bms.controller;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
@@ -42,12 +45,17 @@ public class LoginController {
 
 	//SIGNUP	
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public String SignUp(@RequestBody UserDto userDto) {
+	public Map<String,String> SignUp(@RequestBody UserDto userDto) {
+		Map<String,String> map = new HashMap<>();
 		String messgae = userService.registerFunction(userDto);
-		if (messgae == null)
-			return "Cannot Register this seller..";
-		else
-			return "Registered Successfully";
+		if (messgae == null) {
+			map.put("message", "cannot be registered");
+			return map;
+	}else {
+			map.put("message", "registered successfully !!");
+		    return map;
+		}
+			
 	}
 	
 	//LOGOUT

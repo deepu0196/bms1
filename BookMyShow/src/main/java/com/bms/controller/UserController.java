@@ -40,10 +40,10 @@ public class UserController {
 	//GET ALL USERS LIST
 	@RequestMapping(value = "/allUsers", method = RequestMethod.GET)
 	public List<UserDto> retrieveAllUsers(HttpServletRequest request) throws BookMyShowException {
-		if(iredis.checkToken(request)==true)
+		//if(iredis.checkToken(request)==true)
 		return userService.fetchAllUser();
-		else
-		return null;
+		//else
+		//return null;
 	}
 	
 
